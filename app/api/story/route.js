@@ -7,7 +7,7 @@ export async function POST(request) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-    "x-api-key": "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",
+
         "anthropic-version": "2023-06-01",
       },
       body: JSON.stringify({
