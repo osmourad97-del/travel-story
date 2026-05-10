@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 export async function POST(request) {
   try {
     const body = await request.json();
@@ -10,12 +12,10 @@ export async function POST(request) {
       },
       body: JSON.stringify({
         model: "claude-sonnet-4-20250514",
-        max_tokens: 1500,
-        system: `You are a travel storyteller. Given a city and preferences, create ONE perfect day itinerary. Reply ONLY with valid JSON, no markdown, no backticks, no explanation:
-{"city":"","headline":"","intro":"","stops":[{"time":"9:00 AM","emoji":"☕","name":"","category":"Coffee","story":"","tip":"","vibe":"cozy"}],"closing":""}
-Vibes: cozy/romantic/adventurous/chill/foodie/cultural
-Categories: Coffee/Food/Activity/Hotel/Transport/Shopping/Nature/Culture/Entertainment
-Include 6-8 stops. Be specific with real place names.`,
+        max_tokens: 800,
+        system: `Travel storyteller. Reply ONLY with this JSON, no backticks:
+{"city":"","headline":"","intro":"","stops":[{"time":"9AM","emoji":"☕","name":"","category":"Coffee","story":"","tip":"","vibe":"cozy"}],"closing":""}
+Max 6 stops. Short sentences. Real places only.`,
         messages: [{ role: "user", content: body.prompt }],
       }),
     });
