@@ -1,36 +1,27 @@
 export async function POST(request) {
-  const body = await request.json();
-  const response = await fetch("https://api.anthropic.com/v1/messages", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "x-api-key": process.env.ANTHROPIC_API_KEY,
-      "anthropic-version": "2023-06-01",
-    },
-    body: JSON.stringify({
-      model: "claude-sonnet-4-20250514",
-      max_tokens: 1000,
-      system: `You are a warm creative travel storyteller. Craft ONE perfect day story with 6-8 stops. Respond ONLY with JSON no backticks: {"city":"","headline":"","intro":"","stops":[{"time":"","emoji":"","name":"","category":"","story":"","tip":"","vibe":""}],"closing":""}`,
-      messages: [{ role: "user", content: body.prompt }],
-    }),
-  });
-  const data = await response.json();
-  return new Response(JSON.stringify(data), {
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "POST, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type",
-    },
-  });
-}
-
-export async function OPTIONS() {
-  return new Response(null, {
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "POST, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type",
-    },
-  });
+  try {
+    const body = await request.json();
+    const response = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": process.env.ANTHROPIC_API_KEY,
+        "anthropic-version": "2023-06-01",
+      },
+      body: JSON.stringify({
+        model: "claude-sonnet-4-20250514",
+        max_tokens: 1500,
+        system: `You are a travel storyteller. Given a city and preferences, create ONE perfect day itinerary. Reply ONLY with valid JSON, no markdown, no backticks, no explanation:
+{"city":"","headline":"","intro":"","stops":[{"time":"9:00 AM","emoji":"☕","name":"","category":"Coffee","story":"","tip":"","vibe":"cozy"}],"closing":""}
+Vibes: cozy/romantic/adventurous/chill/foodie/cultural
+Categories: Coffee/Food/Activity/Hotel/Transport/Shopping/Nature/Culture/Entertainment
+Include 6-8 stops. Be specific with real place names.`,
+        messages: [{ role: "user", content: body.prompt }],
+      }),
+    });
+    const data = await response.json();
+    return Response.json(data);
+  } catch (e) {
+    return Response.json({ error: e.message }, { status: 500 });
+  }
 }
