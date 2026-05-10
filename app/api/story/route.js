@@ -7,7 +7,6 @@ export async function POST(request) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-
         "anthropic-version": "2023-06-01",
       },
       body: JSON.stringify({
