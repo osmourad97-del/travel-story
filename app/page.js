@@ -27,7 +27,7 @@ const CITIES = [
 
 const AGES = Array.from({length: 53}, (_, i) => i + 18);
 const FOOD_OPTIONS = ["🍕 Pizza","🍣 Sushi","🥩 Steak","🍗 Chicken","🍔 Burger","🌮 Tacos","🍜 Noodles","🥗 Salad","🦞 Seafood","🍛 Curry"];
-const NEEDS_OPTIONS = ["🏨 Hotel","🏠 Airbnb"];
+const NEEDS_OPTIONS = ["🏨 Hotel","🏠 Airbnb","🚕 Taxi","🚇 Metro","🎬 Cinema","🛍️ Shopping","☕ Coffee Shops","🍺 Bars"];
 const INTERESTS = ["Cinema 🎬","Coffee ☕","Nature 🌿","Art 🎨","Food 🍽️","Nightlife 🌙","Shopping 🛍️","History 🏛️","Music 🎵","Sports ⚽"];
 const WITH_OPTIONS = ["Solo 🧍","Partner ❤️","Friends 👯","Family 👨‍👩‍👧","Kids 🧒"];
 
@@ -39,7 +39,7 @@ function Tag({ label, color }) {
 
 export default function TravelStory() {
   const [step, setStep] = useState("input");
-  const [form, setForm] = useState({ city:"", age:"", with:"", interests:[], food:[], needs:[] });
+  const [form, setForm] = useState({ city:"", age:"", companion:"", interests:[], food:[], needs:[] });
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -51,7 +51,7 @@ export default function TravelStory() {
     if (!form.city) return;
     setLoading(true); setError("");
     try {
-      const prompt = `City: ${form.city}\nAge: ${form.age||"not specified"}\nTraveling with: ${form.with||"not specified"}\nInterests: ${form.interests.join(", ")||"general"}\nFavorite food: ${form.food.join(", ")||"anything local"}\nNeeds: ${form.needs.join(", ")||"standard travel needs"}`;
+      const prompt = `City: ${form.city}\nAge: ${form.age||"not specified"}\nTraveling companion: ${form.companion||"not specified"}\nInterests: ${form.interests.join(", ")||"general"}\nFavorite food: ${form.food.join(", ")||"anything local"}\nNeeds: ${form.needs.join(", ")||"standard travel needs"}`;
       const res = await fetch("/api/story", { method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({prompt}) });
       const data = await res.json();
       const text = data.content?.find(b=>b.type==="text")?.text||"";
@@ -61,7 +61,7 @@ export default function TravelStory() {
     finally { setLoading(false); }
   };
 
-  const reset = () => { setStep("input"); setResult(null); setForm({city:"",age:"",with:"",interests:[],food:[],needs:[]}); setError(""); };
+  const reset = () => { setStep("input"); setResult(null); setForm({city:"",age:"",companion:"",interests:[],food:[],needs:[]}); setError(""); };
 
   const sel = { width:"100%", border:"1.5px solid #e7e5e4", borderRadius:12, padding:"13px 16px", fontSize:15, outline:"none", background:"#faf7f2", appearance:"none", cursor:"pointer", fontFamily:"'DM Sans',sans-serif" };
 
@@ -109,7 +109,7 @@ export default function TravelStory() {
                 </div>
                 <div>
                   <label style={{ display:"block", fontSize:13, color:"#78716c", marginBottom:8, fontFamily:"'DM Sans',sans-serif", fontWeight:600 }}>👥 Traveling with</label>
-                  <select value={form.with} onChange={e=>setForm(f=>({...f,with:e.target.value}))} style={{...sel, color:form.with?"#1c1917":"#a8a29e"}}>
+                  <select value={form.companion} onChange={e=>setForm(f=>({...f,companion:e.target.value}))} style={{...sel, color:form.companion?"#1c1917":"#a8a29e"}}>
                     <option value="">Select...</option>
                     {WITH_OPTIONS.map(o=><option key={o} value={o}>{o}</option>)}
                   </select>
