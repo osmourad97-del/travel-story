@@ -27,8 +27,8 @@ const CITIES = [
 
 const AGES = Array.from({length: 53}, (_, i) => i + 18);
 const FOOD_OPTIONS = ["🍕 Pizza","🍣 Sushi","🥩 Steak","🍗 Chicken","🍔 Burger","🌮 Tacos","🍜 Noodles","🥗 Salad","🦞 Seafood","🍛 Curry"];
-const NEEDS_OPTIONS = ["🏨 Hotel","🏠 Airbnb","🚕 Taxi","🚇 Metro","🎬 Cinema","🛍️ Shopping","☕ Coffee Shops","🍺 Bars"];
-const INTERESTS = ["Cinema 🎬","Coffee ☕","Nature 🌿","Art 🎨","Food 🍽️","Nightlife 🌙","Shopping 🛍️","History 🏛️","Music 🎵","Sports ⚽"];
+const NEEDS_OPTIONS = ["🏨 Hotel","🏠 Airbnb"];
+const INTERESTS = ["Cinema 🎬","Coffee ☕","Nature 🌿","Art 🎨","Food 🍽️","Nightlife 🌙","Shopping 🛍️","History 🏛️","Music 🎵",;
 const WITH_OPTIONS = ["Solo 🧍","Partner ❤️","Friends 👯","Family 👨‍👩‍👧","Kids 🧒"];
 
 function Tag({ label, color }) {
