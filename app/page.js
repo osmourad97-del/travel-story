@@ -1,6 +1,19 @@
 "use client";
 import { useState } from "react";
 
+const COUNTRIES = [
+  "Albania", "Algeria", "Andorra", "Angola", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan",
+  "Bahrain", "Bangladesh", "Belarus", "Belgium", "Bolivia", "Bosnia", "Brazil", "Bulgaria", "Cambodia", "Canada",
+  "Chile", "China", "Colombia", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Ecuador", "Egypt",
+  "Estonia", "Finland", "France", "Georgia", "Germany", "Greece", "Guatemala", "Hong Kong", "Hungary", "Iceland",
+  "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Japan", "Jordan", "Kazakhstan",
+  "Kuwait", "Latvia", "Lebanon", "Lithuania", "Luxembourg", "Malaysia", "Malta", "Mexico", "Moldova", "Monaco",
+  "Mongolia", "Montenegro", "Morocco", "Netherlands", "New Zealand", "North Macedonia", "Norway", "Oman", "Pakistan", "Panama",
+  "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Saudi Arabia", "Serbia",
+  "Singapore", "Slovakia", "Slovenia", "South Korea", "Spain", "Sri Lanka", "Sweden", "Switzerland", "Taiwan", "Thailand",
+  "Tunisia", "Turkey", "UAE", "Ukraine", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Venezuela", "Vietnam"
+];
+
 const INTERESTS = ["Cinema 🎬", "Coffee ☕", "Nature 🌿", "Art 🎨", "Food 🍽️", "Nightlife 🌙", "Shopping 🛍️", "History 🏛️", "Music 🎵", "Sports ⚽"];
 const FOODS = ["Pizza 🍕", "Sushi 🍣", "Steak 🥩", "Chicken 🍗", "Burger 🍔", "Tacos 🌮", "Noodles 🍜", "Salad 🥗", "Seafood 🦞", "Curry 🍛"];
 const NEEDS = ["Hotel 🏨", "Airbnb 🏠"];
@@ -9,7 +22,7 @@ const COMPANIONS = ["Solo", "Partner", "Friends", "Family"];
 
 export default function TravelStory() {
   const [step, setStep] = useState("input");
-  const [form, setForm] = useState({ city: "", age: "", companion: "", interests: [], food: [], needs: [] });
+  const [form, setForm] = useState({ country: "", age: "", companion: "", interests: [], food: [], needs: [] });
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -23,11 +36,11 @@ export default function TravelStory() {
     }));
 
   const generate = async () => {
-    if (!form.city) return;
+    if (!form.country) return;
     setLoading(true);
     setError("");
     try {
-      const prompt = `City: ${form.city}\nAge: ${form.age || "not specified"}\nTraveling companion: ${form.companion || "not specified"}\nInterests: ${form.interests.join(", ") || "general"}\nFavorite food: ${form.food.join(", ") || "anything local"}\nNeeds: ${form.needs.join(", ") || "standard travel needs"}\n\nIMPORTANT: Only generate stories for real cities in Europe, Americas, Asia, Australia, or Middle East. Write a vivid travel story for this city.`;
+      const prompt = `Country: ${form.country}\nAge: ${form.age || "not specified"}\nTraveling companion: ${form.companion || "not specified"}\nInterests: ${form.interests.join(", ") || "general"}\nFavorite food: ${form.food.join(", ") || "anything local"}\nNeeds: ${form.needs.join(", ") || "standard travel needs"}`;
       const res = await fetch("/api/story", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -48,7 +61,7 @@ export default function TravelStory() {
   const reset = () => {
     setStep("input");
     setResult(null);
-    setForm({ city: "", age: "", companion: "", interests: [], food: [], needs: [] });
+    setForm({ country: "", age: "", companion: "", interests: [], food: [], needs: [] });
     setError("");
   };
 
@@ -58,19 +71,21 @@ export default function TravelStory() {
         <div style={{ textAlign: "center", marginBottom: 32 }}>
           <span style={{ background: "#1c1917", color: "#faf7f2", borderRadius: 99, padding: "4px 16px", fontSize: 13 }}>✦ AI TRAVEL PLANNER</span>
           <h1 style={{ fontFamily: "'Playfair Display',Georgia,serif", fontSize: 48, margin: "16px 0 8px" }}>Plan Your Day</h1>
-          <p style={{ color: "#78716c" }}>Your city. Your vibe. Your perfect day written just for you.</p>
+          <p style={{ color: "#78716c" }}>Your country. Your vibe. Your perfect day written just for you.</p>
         </div>
 
         {step === "input" && (
           <div style={{ background: "#fff", borderRadius: 16, padding: 28, boxShadow: "0 2px 16px #0001" }}>
             <div style={{ marginBottom: 16 }}>
-              <label style={{ fontSize: 14, fontWeight: 600 }}>📍 Where are you going?</label>
-              <input
-                value={form.city}
-                onChange={e => setForm(f => ({ ...f, city: e.target.value }))}
-                placeholder="Paris, Tokyo, Dubai..."
+              <label style={{ fontSize: 14, fontWeight: 600 }}>🌍 Where are you going?</label>
+              <select
+                value={form.country}
+                onChange={e => setForm(f => ({ ...f, country: e.target.value }))}
                 style={{ width: "100%", marginTop: 8, padding: "10px 14px", borderRadius: 8, border: "1px solid #e7e5e4", fontSize: 16, boxSizing: "border-box" }}
-              />
+              >
+                <option value="">Select a country...</option>
+                {COUNTRIES.map(c => <option key={c} value={c}>{c}</option>)}
+              </select>
             </div>
 
             <div style={{ display: "flex", gap: 12, marginBottom: 16 }}>
@@ -126,7 +141,7 @@ export default function TravelStory() {
               </div>
             </div>
 
-            <button onClick={generate} disabled={loading || !form.city}
+            <button onClick={generate} disabled={loading || !form.country}
               style={{ width: "100%", padding: 14, borderRadius: 10, background: "#1c1917", color: "#fff", fontSize: 16, fontWeight: 600, border: "none", cursor: loading ? "wait" : "pointer" }}>
               {loading ? "Writing your story..." : "✦ Write My Day Story"}
             </button>
@@ -136,7 +151,7 @@ export default function TravelStory() {
 
         {step === "result" && result && (
           <div>
-            <h2 style={{ textAlign: "center" }}>Your Day in {form.city} ✦</h2>
+            <h2 style={{ textAlign: "center" }}>Your Day in {form.country} ✦</h2>
             <p style={{ textAlign: "center", color: "#78716c" }}>{result.headline}</p>
             {result.stops?.map((stop, idx) => (
               <div key={idx} style={{ background: "#fff", borderRadius: 12, padding: 20, marginBottom: 16, boxShadow: "0 1px 8px #0001" }}>
