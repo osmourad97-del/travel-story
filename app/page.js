@@ -21,8 +21,6 @@ const COUNTRIES = [
   "United States"
 ];
 ```
-
-هاد هو بالصيغة الصحيحة — انسخه وحطه بالكود بدل القائمة القديمة ✅
 const INTERESTS = ["Coffee ☕", "Restaurant 🍽️", "Shopping 🛍️", "History 🏛️", "Nature 🌿"];
 const FOODS = ["Meat 🥩", "Chicken 🍗", "Sushi 🍣", "Burger 🍔", "Pizza 🍕", "Tacos 🌮", "Noodles 🍜", "Seafood 🦞", "Salad 🥗", "Curry 🍛"];
 const NEEDS = ["Hotel 🏨", "Airbnb 🏠"];
