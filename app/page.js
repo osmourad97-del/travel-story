@@ -2,16 +2,16 @@
 import { useState } from "react";
 
 const COUNTRIES = [
-  "Albania", "Algeria", "Andorra", "Angola", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan",
+  "Albania", "Algeria", "Argentina", "Armenia", "Australia", "Austria", 
   "Bahrain", "Bangladesh", "Belarus", "Belgium", "Bolivia", "Bosnia", "Brazil", "Bulgaria", "Cambodia", "Canada",
-  "Chile", "China", "Colombia", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Ecuador", "Egypt",
+  "Chile", "China", "Colombia", "Croatia", "Cuba", "Cyprus", "Denmark","Egypt",
   "Estonia", "Finland", "France", "Georgia", "Germany", "Greece", "Guatemala", "Hong Kong", "Hungary", "Iceland",
   "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Japan", "Jordan", "Kazakhstan",
   "Kuwait", "Latvia", "Lebanon", "Lithuania", "Luxembourg", "Malaysia", "Malta", "Mexico", "Moldova", "Monaco",
   "Mongolia", "Montenegro", "Morocco", "Netherlands", "New Zealand", "North Macedonia", "Norway", "Oman", "Pakistan", "Panama",
   "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Saudi Arabia", "Serbia",
   "Singapore", "Slovakia", "Slovenia", "South Korea", "Spain", "Sri Lanka", "Sweden", "Switzerland", "Taiwan", "Thailand",
-  "Tunisia", "Turkey", "UAE", "Ukraine", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Venezuela", "Vietnam"
+  "Tunisia", "Turkey", "UAE", "Ukraine", "United Kingdom", "United States", "Vietnam"
 ];
 
 const INTERESTS = ["Cinema 🎬", "Coffee ☕", "Nature 🌿", "Art 🎨", "Food 🍽️", "Nightlife 🌙", "Shopping 🛍️", "History 🏛️", "Music 🎵", "Sports ⚽"];
