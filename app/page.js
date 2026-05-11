@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-const INTERESTS = ["Cinema 🎬", "Coffee ☕", "Nature 🌿", "Art 🎨", "Food 🍽️", "Nightlife 🌙", "Shopping 🛍️", "History 🏛️", "Music 🎵", "Sports ⚽"];
+const INTERESTS = ["Cinema 🎬", "Coffee ☕", "Nature 🌿", "Art 🎨", "Food 🍽️", "Nightlife 🌙", "Shopping 🛍️", "History 🏛️", "Music];
 const FOODS = ["Pizza 🍕", "Sushi 🍣", "Steak 🥩", "Chicken 🍗", "Burger 🍔", "Tacos 🌮", "Noodles 🍜", "Salad 🥗", "Seafood 🦞", "Curry 🍛"];
 const NEEDS = ["Hotel 🏨", "Airbnb 🏠"];
 const AGES = ["18-24", "25-34", "35-44", "45-54", "55+"];
