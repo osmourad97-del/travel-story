@@ -1,3 +1,4 @@
+```javascript
 export const runtime = 'edge';
 
 export async function POST(request) {
@@ -8,10 +9,10 @@ export async function POST(request) {
       headers: {
         "Content-Type": "application/json",
         "anthropic-version": "2023-06-01",
-        "x-api-key": process.env.ANTHROPIC_API_KEY // Nødvendig for at API-et skal godta forespørselen
+        "x-api-key": process.env.ANTHROPIC_API_KEY
       },
       body: JSON.stringify({
-        model: "claude-3-5-sonnet-20240620", // Bruker en modell som faktisk eksisterer
+        model: "claude-sonnet-4-20250514",
         max_tokens: 800,
         system: `Travel storyteller. Reply ONLY with this JSON, no backticks:
 {"city":"","headline":"","intro":"","stops":[{"time":"9AM","emoji":"☕","name":"","category":"Coffee","story":"","tip":"","vibe":"cozy"}],"closing":""}
@@ -19,7 +20,6 @@ Max 6 stops. Short sentences. Real places only.`,
         messages: [{ role: "user", content: body.prompt }],
       }),
     });
-
     const data = await response.json();
     return Response.json(data);
   } catch (e) {
