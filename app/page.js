@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-const INTERESTS = ["Cinema 🎬", "Coffee ☕", "Nature 🌿", "Art 🎨", "Food 🍽️", "Nightlife 🌙", "Shopping 🛍️", "History 🏛️", "Music];
+const INTERESTS = ["Cinema 🎬", "Coffee ☕", "Nature 🌿", "Art 🎨", "Food 🍽️", "Nightlife 🌙", "Shopping 🛍️", "History 🏛️", "Music 🎵", "Sports ⚽"];
 const FOODS = ["Pizza 🍕", "Sushi 🍣", "Steak 🥩", "Chicken 🍗", "Burger 🍔", "Tacos 🌮", "Noodles 🍜", "Salad 🥗", "Seafood 🦞", "Curry 🍛"];
 const NEEDS = ["Hotel 🏨", "Airbnb 🏠"];
 const AGES = ["18-24", "25-34", "35-44", "45-54", "55+"];
@@ -27,7 +27,7 @@ export default function TravelStory() {
     setLoading(true);
     setError("");
     try {
-      const prompt = `City: ${form.city}\nAge: ${form.age || "not specified"}\nTraveling companion: ${form.companion || "not specified"}\nInterests: ${form.interests.join(", ") || "general"}\nFavorite food: ${form.food.join(", ") || "anything local"}\nNeeds: ${form.needs.join(", ") || "standard travel needs"}`;
+      const prompt = `City: ${form.city}\nAge: ${form.age || "not specified"}\nTraveling companion: ${form.companion || "not specified"}\nInterests: ${form.interests.join(", ") || "general"}\nFavorite food: ${form.food.join(", ") || "anything local"}\nNeeds: ${form.needs.join(", ") || "standard travel needs"}\n\nIMPORTANT: Only generate stories for real cities in Europe, Americas, Asia, Australia, or Middle East. Write a vivid travel story for this city.`;
       const res = await fetch("/api/story", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -68,7 +68,7 @@ export default function TravelStory() {
               <input
                 value={form.city}
                 onChange={e => setForm(f => ({ ...f, city: e.target.value }))}
-                placeholder="Athens"
+                placeholder="Paris, Tokyo, Dubai..."
                 style={{ width: "100%", marginTop: 8, padding: "10px 14px", borderRadius: 8, border: "1px solid #e7e5e4", fontSize: 16, boxSizing: "border-box" }}
               />
             </div>
