@@ -11,8 +11,8 @@ export async function POST(request) {
         "x-api-key": process.env.ANTHROPIC_API_KEY
       },
       body: JSON.stringify({
-        model: "claude-sonnet-4-20250514",
-        max_tokens: 800,
+        model: "claude-sonnet-4-5",
+        max_tokens: 1000,
         system: `Travel storyteller. Reply ONLY with this JSON, no backticks:
 {"city":"","headline":"","intro":"","stops":[{"time":"9AM","emoji":"☕","name":"","category":"Coffee","story":"","tip":"","vibe":"cozy"}],"closing":""}
 Max 6 stops. Short sentences. Real places only.`,
