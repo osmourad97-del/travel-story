@@ -2,14 +2,23 @@
 import { useState } from "react";
 
 const COUNTRIES = [
-  "Albania","Australia", "Austria", "Bahrain" "Cambodia", "Canada",
-  "China", "Colombia", "Croatia", "Denmark", "Egypt",
-  "Estonia", "Finland", "France", "Georgia", "Germany", "Greece","Hong Kong", "Hungary", "Iceland",
-  "Ireland", "Israel", "Italy", "Japan", "Jordan"
-  "Kuwait", "Latvia", "Lebanon" "Netherlands", "New Zealand", "Norway", "Oman"
- "Poland", "Portugal", "Qatar", "Romania", "Russia", "Saudi Arabia", "Serbia",
-  "Singapore","South Korea", "Spain", "Sweden", "Switzerland"
-   "Turkey", "UAE", "Ukraine", "United Kingdom", "United States"
+  "Albania", "Australia", "Austria",
+  "Bahrain", "Cambodia", "Canada",
+  "China", "Colombia", "Croatia",
+  "Denmark", "Egypt", "Estonia",
+  "Finland", "France", "Georgia",
+  "Germany", "Greece", "Hong Kong",
+  "Hungary", "Iceland", "Ireland",
+  "Israel", "Italy", "Japan",
+  "Jordan", "Kuwait", "Latvia",
+  "Lebanon", "Netherlands", "New Zealand",
+  "Norway", "Oman", "Poland",
+  "Portugal", "Qatar", "Romania",
+  "Russia", "Saudi Arabia", "Serbia",
+  "Singapore", "South Korea", "Spain",
+  "Sweden", "Switzerland", "Turkey",
+  "UAE", "Ukraine", "United Kingdom",
+  "United States"
 ];
 
 const INTERESTS = ["Coffee ☕", "Restaurant 🍽️", "Shopping 🛍️", "History 🏛️", "Nature 🌿"];
@@ -112,7 +121,7 @@ export default function TravelStory() {
               <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 8 }}>
                 {INTERESTS.map(i => (
                   <button key={i} onClick={() => toggleItem("interests", i)}
-                    style={{ padding: "8px 16px", borderRadius: 99, border: "2px solid #e9d5ff", background: form.interests.includes(i) ? "linear-gradient(135deg, #667eea, #764ba2)" : "#fff", color: form.interests.includes(i) ? "#fff" : "#4c1d95", cursor: "pointer", fontSize: 14, fontWeight: 600, transition: "all 0.2s" }}>
+                    style={{ padding: "8px 16px", borderRadius: 99, border: "2px solid #e9d5ff", background: form.interests.includes(i) ? "linear-gradient(135deg, #667eea, #764ba2)" : "#fff", color: form.interests.includes(i) ? "#fff" : "#4c1d95", cursor: "pointer", fontSize: 14, fontWeight: 600 }}>
                     {i}
                   </button>
                 ))}
@@ -124,7 +133,7 @@ export default function TravelStory() {
               <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 8 }}>
                 {FOODS.map(i => (
                   <button key={i} onClick={() => toggleItem("food", i)}
-                    style={{ padding: "8px 16px", borderRadius: 99, border: "2px solid #e9d5ff", background: form.food.includes(i) ? "linear-gradient(135deg, #667eea, #764ba2)" : "#fff", color: form.food.includes(i) ? "#fff" : "#4c1d95", cursor: "pointer", fontSize: 14, fontWeight: 600, transition: "all 0.2s" }}>
+                    style={{ padding: "8px 16px", borderRadius: 99, border: "2px solid #e9d5ff", background: form.food.includes(i) ? "linear-gradient(135deg, #667eea, #764ba2)" : "#fff", color: form.food.includes(i) ? "#fff" : "#4c1d95", cursor: "pointer", fontSize: 14, fontWeight: 600 }}>
                     {i}
                   </button>
                 ))}
