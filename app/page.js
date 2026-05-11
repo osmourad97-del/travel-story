@@ -2,12 +2,15 @@
 import { useState } from "react";
 
 const COUNTRIES = [
-   "Australia", "Austria","Belgium",  "Canada","Denmark", "Finland", "France","Germany", "Greece", "Ireland", "Israel", "Italy", "Japan", 
- "netherlands", "New Zealand", "Norway", "Spain", "Sweden", "Switzerland","Turkey", "UAE", "Ukraine", "United Kingdom", "United States"
+  "Albania","Australia", "Austria", "Bahrain" "Cambodia", "Canada",
+  "China", "Colombia", "Croatia", "Denmark", "Egypt",
+  "Estonia", "Finland", "France", "Georgia", "Germany", "Greece","Hong Kong", "Hungary", "Iceland",
+  "Ireland", "Israel", "Italy", "Japan", "Jordan"
+  "Kuwait", "Latvia", "Lebanon" "Netherlands", "New Zealand", "Norway", "Oman"
+ "Poland", "Portugal", "Qatar", "Romania", "Russia", "Saudi Arabia", "Serbia",
+  "Singapore","South Korea", "Spain", "Sweden", "Switzerland"
+   "Turkey", "UAE", "Ukraine", "United Kingdom", "United States"
 ];
-
-"use client";
-import { useState } from "react";
 
 const INTERESTS = ["Coffee ☕", "Restaurant 🍽️", "Shopping 🛍️", "History 🏛️", "Nature 🌿"];
 const FOODS = ["Meat 🥩", "Chicken 🍗", "Sushi 🍣", "Burger 🍔", "Pizza 🍕", "Tacos 🌮", "Noodles 🍜", "Seafood 🦞", "Salad 🥗", "Curry 🍛"];
@@ -139,6 +142,7 @@ export default function TravelStory() {
                 ))}
               </div>
             </div>
+
             <button onClick={generate} disabled={loading || !form.country}
               style={{ width: "100%", padding: 16, borderRadius: 12, background: "linear-gradient(135deg, #667eea, #764ba2)", color: "#fff", fontSize: 17, fontWeight: 700, border: "none", cursor: loading ? "wait" : "pointer", boxShadow: "0 4px 15px rgba(102,126,234,0.5)" }}>
               {loading ? "Writing your story..." : "✦ Write My Day Story"}
@@ -171,4 +175,3 @@ export default function TravelStory() {
     </div>
   );
 }
-
