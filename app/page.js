@@ -2,16 +2,27 @@
 import { useState } from "react";
 
 const COUNTRIES = [
-  "Albania","Australia", "Austria", "Bahrain" "Cambodia", "Canada",
-  "China", "Colombia", "Croatia", "Denmark", "Egypt",
-  "Estonia", "Finland", "France", "Georgia", "Germany", "Greece","Hong Kong", "Hungary", "Iceland",
-  "Ireland", "Israel", "Italy", "Japan", "Jordan"
-  "Kuwait", "Latvia", "Lebanon" "Netherlands", "New Zealand", "Norway", "Oman"
- "Poland", "Portugal", "Qatar", "Romania", "Russia", "Saudi Arabia", "Serbia",
-  "Singapore","South Korea", "Spain", "Sweden", "Switzerland"
-   "Turkey", "UAE", "Ukraine", "United Kingdom", "United States"
+  "Albania", "Australia", "Austria",
+  "Bahrain", "Cambodia", "Canada",
+  "China", "Colombia", "Croatia",
+  "Denmark", "Egypt", "Estonia",
+  "Finland", "France", "Georgia",
+  "Germany", "Greece", "Hong Kong",
+  "Hungary", "Iceland", "Ireland",
+  "Israel", "Italy", "Japan",
+  "Jordan", "Kuwait", "Latvia",
+  "Lebanon", "Netherlands", "New Zealand",
+  "Norway", "Oman", "Poland",
+  "Portugal", "Qatar", "Romania",
+  "Russia", "Saudi Arabia", "Serbia",
+  "Singapore", "South Korea", "Spain",
+  "Sweden", "Switzerland", "Turkey",
+  "UAE", "Ukraine", "United Kingdom",
+  "United States"
 ];
+```
 
+هاد هو بالصيغة الصحيحة — انسخه وحطه بالكود بدل القائمة القديمة ✅
 const INTERESTS = ["Coffee ☕", "Restaurant 🍽️", "Shopping 🛍️", "History 🏛️", "Nature 🌿"];
 const FOODS = ["Meat 🥩", "Chicken 🍗", "Sushi 🍣", "Burger 🍔", "Pizza 🍕", "Tacos 🌮", "Noodles 🍜", "Seafood 🦞", "Salad 🥗", "Curry 🍛"];
 const NEEDS = ["Hotel 🏨", "Airbnb 🏠"];
