@@ -58,13 +58,13 @@ export default function TravelStory() {
         <div style={{ textAlign: "center", marginBottom: 32 }}>
           <span style={{ background: "#1c1917", color: "#faf7f2", borderRadius: 99, padding: "4px 16px", fontSize: 13 }}>✦ AI TRAVEL PLANNER</span>
           <h1 style={{ fontFamily: "'Playfair Display',Georgia,serif", fontSize: 48, margin: "16px 0 8px" }}>Plan Your Day</h1>
-          <p style={{ color: "#78716c" }}>Your city. Your vibe. Your perfect day — written just for you.</p>
+          <p style={{ color: "#78716c" }}>Your city. Your vibe. Your perfect day written just for you.</p>
         </div>
 
         {step === "input" && (
           <div style={{ background: "#fff", borderRadius: 16, padding: 28, boxShadow: "0 2px 16px #0001" }}>
             <div style={{ marginBottom: 16 }}>
-              <label style={{ fontSize: 14, fontWeight: 600 }}>📍 Where are you going? *</label>
+              <label style={{ fontSize: 14, fontWeight: 600 }}>📍 Where are you going?</label>
               <input
                 value={form.city}
                 onChange={e => setForm(f => ({ ...f, city: e.target.value }))}
@@ -127,7 +127,7 @@ export default function TravelStory() {
             </div>
 
             <button onClick={generate} disabled={loading || !form.city}
-              style={{ width: "100%", padding: "14px", borderRadius: 10, background: "#1c1917", color: "#fff", fontSize: 16, fontWeight: 600, border: "none", cursor: loading ? "wait" : "pointer" }}>
+              style={{ width: "100%", padding: 14, borderRadius: 10, background: "#1c1917", color: "#fff", fontSize: 16, fontWeight: 600, border: "none", cursor: loading ? "wait" : "pointer" }}>
               {loading ? "Writing your story..." : "✦ Write My Day Story"}
             </button>
             {error && <p style={{ color: "red", marginTop: 12, textAlign: "center" }}>{error}</p>}
@@ -155,3 +155,4 @@ export default function TravelStory() {
       </div>
     </div>
   );
+}
